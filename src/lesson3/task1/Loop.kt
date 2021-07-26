@@ -80,7 +80,8 @@ fun digitNumber(n: Int): Int = TODO()
  * Найти число Фибоначчи из ряда 1, 1, 2, 3, 5, 8, 13, 21, ... с номером n.
  * Ряд Фибоначчи определён следующим образом: fib(1) = 1, fib(2) = 1, fib(n+2) = fib(n) + fib(n+1)
  */
-fun fib(n: Int): Int = TODO()
+fun fib(n: Int): Int = if (n <= 2) 1 else fib(n - 1) + fib(n - 2)
+
 
 /**
  * Простая (2 балла)
@@ -119,17 +120,32 @@ fun collatzSteps(x: Int): Int = TODO()
  *
  * Для заданных чисел m и n найти наименьшее общее кратное, то есть,
  * минимальное число k, которое делится и на m и на n без остатка
+ *
  */
-fun lcm(m: Int, n: Int): Int = TODO()
+fun lcm(m: Int, n: Int): Int {
+    var x = m
+    var y = n
+    while (x != y) {
+        if (x > y) x -= y
+        else y -= x
+    }
+    return (m * n) / x
+}
 
 /**
  * Средняя (3 балла)
- *
+ *m
  * Определить, являются ли два заданных числа m и n взаимно простыми.
  * Взаимно простые числа не имеют общих делителей, кроме 1.
  * Например, 25 и 49 взаимно простые, а 6 и 8 -- нет.
  */
-fun isCoPrime(m: Int, n: Int): Boolean = TODO()
+fun isCoPrime(m: Int, n: Int): Boolean {
+    var x = m
+    var y = n
+    while (x != y) if (x > y) x -= y
+    else y -= x
+    return x == 1
+}
 
 /**
  * Средняя (3 балла)
@@ -147,7 +163,15 @@ fun squareBetweenExists(m: Int, n: Int): Boolean = TODO()
  *
  * Использовать операции со строками в этой задаче запрещается.
  */
-fun revert(n: Int): Int = TODO()
+fun revert(n: Int): Int {
+    var m = 0
+    var n = n
+    while (n > 0) {
+        m = m * 10 + n % 10
+        n /= 10
+    }
+    return m
+}
 
 /**
  * Средняя (3 балла)

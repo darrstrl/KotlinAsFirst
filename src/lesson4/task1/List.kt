@@ -3,6 +3,7 @@
 package lesson4.task1
 
 import lesson1.task1.discriminant
+import ru.spbstu.wheels.NullableMonad.map
 import kotlin.math.sqrt
 
 // Урок 4: списки
@@ -127,7 +128,11 @@ fun abs(v: List<Double>): Double = TODO()
  *
  * Рассчитать среднее арифметическое элементов списка list. Вернуть 0.0, если список пуст
  */
-fun mean(list: List<Double>): Double = TODO()
+fun mean(list: List<Double>): Double {
+    return if (list.isEmpty()) 0.0
+    else list.average()
+}
+
 
 /**
  * Средняя (3 балла)
@@ -176,8 +181,23 @@ fun accumulate(list: MutableList<Int>): MutableList<Int> = TODO()
  * Разложить заданное натуральное число n > 1 на простые множители.
  * Результат разложения вернуть в виде списка множителей, например 75 -> (3, 5, 5).
  * Множители в списке должны располагаться по возрастанию.
+ * for (i in 2..sqrt(n.toDouble()).toInt()) {
+return if (n % i == 0) listOf(i).sorted()
+else listOf(n)
  */
-fun factorize(n: Int): List<Int> = TODO()
+fun factorize(n: Int): List<Int> {
+    var x = n
+    if (x < 2) return listOf(n)
+    for (element in 2 until n) {
+       if (n % element == 0) return listOf(n)
+    }
+    val result = mutableListOf<Int>()
+    for (element in 2..sqrt(n.toDouble()).toInt()) {
+        if (n % element == 0)
+            result.add(element)
+    }
+    return result
+}
 
 /**
  * Сложная (4 балла)

@@ -146,6 +146,7 @@ class Tests {
         assertEquals(2022222222, lcm(1011111111, 2))
     }
 
+
     @Test
     @Tag("3")
     fun isCoPrime() {
